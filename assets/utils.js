@@ -47,13 +47,13 @@ function displayCities(cities, parentNode) {
   if (cities.length === 0) {
     $("<h1>", {
       class: "zero-msg",
-      text: "Не найдено",
+      text: "Ничего не найдено",
     }).appendTo(parentNode);
     return;
   }
 
   for (let i in cities) {
-    $("<div>", { class: "myDiv animate" })
+    $("<div>", { class: "myDiv" })
       .append(
         $("<h1>", {
           class: "alph-letter",
@@ -62,15 +62,25 @@ function displayCities(cities, parentNode) {
       )
       .append(
         $("<ul>").append(
-          cities[i].cities.map((i) => {
-            return `<li>${i.city}`;
-          })
+          cities[i].cities.map((item) =>
+            $("<li/>", { text: item.city })
+              .attr("data-cityid", item.id)
+              .on("click", function () {
+                console.log(
+                  "City id: " +
+                    $(this).data("cityid") +
+                    `\nCity: ${this.innerHTML}`
+                );
+              })
+          )
         )
       )
       .appendTo(parentNode);
-
-    // parentNode.append(div);
   }
+}
+
+function foo(id, city) {
+  console.log(this);
 }
 
 export default {

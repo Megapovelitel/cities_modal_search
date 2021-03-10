@@ -9,7 +9,6 @@ $("#close-modal-btn").bind('click', () => {
 });
 
 window.onclick = (event) => {
-  console.log(event)
   if (event.target === $modal) {
     $modal.style.display = "none";
   }
