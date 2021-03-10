@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+// ===VARS===
+$grey: #dbdbdb;
+$main-blue: #1976d2;
+$bg-color: #fafafa;
+$main-black: #484848;
+$border-radius: 4px;
+$main-grey: #c4c4c4;
+$city-grey: #808080;
+// === /VARS===
+
+// ===MIXINS===
+@mixin wh($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin roboto($fz, $fw, $color) {
+  font-family: "Roboto", sans-serif;
+  font-size: $fz;
+  font-weight: $fw;
+  color: $color;
+}
+// === /MIXINS===
+
+// ===COMMON===
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+
+  @include center-flex;
+}
+
+body {
+  position: relative;
+}
+
+.btn-container {
+  .btn {
+    outline: 2px dotted $main-grey;
+    outline-offset: 4px;
+    height: 40px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  margin-right: 2px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+// === /COMMON===
+
+.input {
+  border-radius: $border-radius;
+  border: 1px solid $grey;
+  outline: none;
+  padding-left: 10px;
+  height: 100%;
+  box-sizing: border-box;
+  flex-grow: 5;
+
+  @include roboto(16px, 400, black);
+
+  &:focus {
+    border-color: 1px solid $main-blue;
+  }
+
+  &::placeholder {
+    color: $main-grey;
+  }
+}
+
+.btn {
+  @include roboto(16px, 400, $bg-color);
+
+  height: 100%;
+  background-color: $main-blue;
+  transition: 0.2s ease;
+  border: 1px solid transparent;
+  outline: none;
+  border-radius: $border-radius;
+  margin-left: 15px;
+  flex-grow: 1;
+
+  &:hover {
+    background-color: $bg-color;
+    color: $main-blue;
+    border-color: $main-blue;
+  }
+
+  &:active {
+    background-color: $grey;
+  }
+}
+
+.input-wrapper {
+  @include wh(100%, 40px);
+
+  display: flex;
+  justify-content: space-between;
+}
+
+// ===MODAL===
+.modal-outer-wrapper {
+  @include center-flex;
+  @include wh(100%, 100%);
+
+  display: none;
+  position: fixed; /* Stay in place */
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  transition: 2s ease-in-out;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  max-height: 678px;
+  height: 678px;
+  box-sizing: border-box;
+  background-color: #fefefe;
+  padding: 32px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  position: relative;
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+.modal-title {
+  @include roboto(24px, 700, $main-black);
+
+  margin-top: 0;
+}
+
+.modal-header {
+  h2 {
+    @include roboto(16px, 400, $main-grey);
+  }
+}
+
+main {
+  overflow: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  .alph-letter {
+    @include roboto(24px, 700, $main-black);
+  }
+
+  div {
+    width: 25%;
+  }
+
+  ul {
+    padding: 0;
+
+    li {
+      @include roboto(16px, 400, $city-grey);
+      list-style-type: none;
+      padding: 0;
+      margin-bottom: 25px;
+    }
+  }
+}
+
+/* The Close Button */
+.close {
+  @include wh(12px, 12px);
+  @include center-flex;
+  @include roboto(1.5em, 400, $main-black);
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  cursor: pointer;
+}
+// === /MODAL===
+
+// ===MEDIA, KEY FRAMES===
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+// === /MEDIA, KEY FRAMES===

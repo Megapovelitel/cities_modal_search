@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <title>Cities</title>
+  </head>
+  <body>
+    <!--Model Open-->
+    <div class="btn-container">
+      <button class="btn" id="open-modal-btn">Открыть поиск</button>
+    </div>
+    <!--Modal Outer-->
+    <div class="modal-outer-wrapper" id="modal">
+      <!--Modal Inner-->
+      <div class="modal-content">
+        <!-- Modal Header-->
+        <div class="modal-header">
+          <h1 class="modal-title">Выбор города</h1>
+          <form class="input-wrapper" name="search">
+            <input id="search" placeholder="Введите город" class="input" />
+            <button id="search-btn" class="btn" type="submit">
+              Найти город
+            </button>
+          </form>
+          <h2>
+            Если объявлений в выбранном городе нет, посмотрите в соответствующем
+            регионе
+          </h2>
+          <span class="close" id="close-modal-btn">&times;</span>
+        </div>
+        <!-- Modal Main -->
+        <main></main>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="module" src="./assets/main.js"></script>
+    <script src="./assets/modal.js"></script>
+  </body>
+</html>
