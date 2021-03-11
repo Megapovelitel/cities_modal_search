@@ -79,10 +79,6 @@ function displayCities(cities, parentNode) {
   }
 }
 
-function foo(id, city) {
-  console.log(this);
-}
-
 export default {
   filterAndSortCities,
   getCities,
